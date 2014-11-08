@@ -16,6 +16,10 @@ def account(request, id):
     return render(request, "account.html")
 
 
+def advertisement(request, id):
+    return render(request, "advertisement.html")
+
+
 
 class AdvtViewSet(viewsets.ModelViewSet):
     """
