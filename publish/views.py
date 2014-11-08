@@ -97,12 +97,14 @@ def makeAdvs(request):
     if request.method=="POST":
         adv = AdvForm(request.POST, request.FILES)
         if adv.is_valid():
+            print "Hi1"
             adv.save()
             return render(request, 'payment.html')
         else:
             return render(request, 'advertisement.html', {'form': adv, 'error': 'true'})
     else:
         print "Hi3"
-        adv = AdvForm()
-        images = Advertisement.objects.all()
-        return render(request, 'advertisement.html', {'form': adv, 'images': images})
+        adv=AdvForm()
+        images=Advertisement.objects.all()
+        beacons=BeaconDevice.objects.all()
+        return render(request,'advertisement.html',{'form':adv,'images':images,'beacons':beacons})

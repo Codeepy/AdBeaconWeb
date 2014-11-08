@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Pic">Picture</label>
+                    <label for="image">Image</label>
                     <div class="input-group">
                         <input type="file" name="pic" id="Pic" class="filestyle" data-buttonName="btn-primary">
                         <!--<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>-->
@@ -65,7 +65,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class='col-sm-6'>
-                            <label for="InputToDate">Start Date</label>
+                            <label for="startDate">Start Date</label>
                             <div class="form-group">
                                 <div class='input-group date' id='datetimepicker2'>
                                     <input type='text' name="from_date" class="form-control" data-date-format="YYYY-MM-DD" />
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class='col-sm-6'>
-                            <label for="InputToDate">End Date</label>
+                            <label for="endDate">End Date</label>
                             <div class="form-group">
                                 <div class='input-group date' id='datetimepicker3'>
                                     <input type='text' name="to_date" class="form-control" data-date-format="YYYY-MM-DD" />
@@ -103,8 +103,15 @@
 
                 <div class="form-group">
                     <label for="BeaconUUID">Beacon UUID</label>
+                    <label for="uuid">Beacon UUID</label>
                     <div class="input-group">
                         <input type="text" name="beacon" id="BeaconUUID" class="form-control">
+                        <!--input type="text" name="beacon" id="InputBeacon" class="form-control"-->
+                        <select multiple id="InputBeacon" class="form-control" id="InputBeacon" name="beacon">
+                             {% for opt in beacons %}
+                                <option value="{{ opt }}">{{ opt }}</option>
+                            {% endfor %}
+                         </select>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -134,6 +141,16 @@
         ({{img.upload_date}})<hr />
         {% endfor %}
 -->
+        <div class="col-lg-5 col-md-push-1">
+            <div class="col-md-12">
+                <div class="alert alert-success">
+                    <strong><span class="glyphicon glyphicon-ok"></span> Success! </strong>
+                </div>
+                <div class="alert alert-danger">
+                    <span class="glyphicon glyphicon-remove"></span><strong> Error! Please check all page inputs.</strong>
+                </div>
+            </div>
+        </div>
     </div>
 <!-- Registration form - END -->
 <br>
