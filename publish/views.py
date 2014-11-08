@@ -106,4 +106,5 @@ def makeAdvs(request):
         print "Hi3"
         adv=AdvForm()
         images=Advertisement.objects.all()
-        return render(request,'advertisement.html',{'form':adv,'images':images})
+        beacons=BeaconDevice.objects.all()
+        return render(request,'advertisement.html',{'form':adv,'images':images,'beacons':beacons})
