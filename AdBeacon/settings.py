@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'i7)uvok7o1fwt9k9lms#91a9sys=e$z!dlcu=6=tnql6$#@_u('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'publish',
     'rest_framework',
+    'corsheaders',
+    'gunicorn'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -62,11 +64,6 @@ WSGI_APPLICATION = 'AdBeacon.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {}
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 
 import dj_database_url
 DATABASES['default'] = dj_database_url.config(default='postgres://codeepy:hackneee@adbeacon.cwwkieja1mig.eu-west-1.rds.amazonaws.com:5432/publish')
