@@ -10,8 +10,12 @@ from publish.models import Advertisement
 router = routers.DefaultRouter()
 router.register(r'advs', views.AdvtViewSet)
 router.register(r'beacons', views.BeaconViewSet)
+router = routers.DefaultRouter()
+router.register(r'advs', views.AdvtViewSet)
+router.register(r'beacons', views.BeaconViewSet)
 urlpatterns = patterns('',
     url(r'^$', 'AdBeacon.views.home', name='home'),
+    url(r'^api/',include(router.urls)),
     url(r'^api/',include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^publish/', include('publish.urls')),
@@ -21,3 +25,4 @@ urlpatterns = patterns('',
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+)
