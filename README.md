@@ -1,3 +1,3 @@
 AdBeacon
 ========
-[ ![Codeship Status for Codeepy/AdBeacon](https://codeship.com/projects/c8a61ab0-495b-0132-73e9-7e9eac026bf8/status)](https://codeship.com/projects/46100)
+[ ![Codeship Status for Codeepy/AdBeaconWeb](https://codeship.com/projects/74782d90-4962-0132-fa8e-56dc7947197d/status)](https://codeship.com/projects/46101)
