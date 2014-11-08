@@ -3,12 +3,55 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+
+    <link rel="shortcut icon" href="/static/img/favicon.png">
+
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/slick.css">
+    <link rel="stylesheet" href="/static/js/rs-plugin/css/settings.css">
+
+    <link rel="stylesheet" href="/static/css/freeze.css">
+
+    <![endif]-->
 </head>
 <body>
     <div style="padding:40px;margin:40px;border:1px solid #ccc">
-    <h1>picture</h1>
+    <h1>Publish Advertisement</h1>
     <form action="#" method="post" enctype="multipart/form-data">
-        {% csrf_token %} {{form}}
+        {% csrf_token %}
+        <div>
+            <label>Company: </label>
+            <input type="text" name="company" class="form-control" value={{form.company.value}}>
+        </div>
+
+        <div>
+            <label>Category: </label>
+            <input type="text" name="category" class="form-control" value={{form.category.value}}>
+        </div>
+
+        <div>
+            <label>Pic: </label>
+            <input type="file" name="pic" class="filestyle" data-buttonName="btn-primary">
+        </div>
+
+        <div>
+            <label>From date: </label>
+            <input type="text" name="from_date" class="form-control" value={{form.from_date.value}}>
+        </div>
+
+        <div>
+            <label>To date: </label>
+            <input type="text" name="to_date" class="form-control" value={{form.to_date.value}}>
+        </div>
+
+        <div>
+            <label>Beacon: </label>
+            <input type="text" name="beacon" class="form-control" value={{form.beacon.value}}>
+        </div>
+
         <input type="submit" value="Upload" />
     </form>
     {% for img in images %}
@@ -16,5 +59,27 @@
         ({{img.upload_date}})<hr />
     {% endfor %}
 </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://markusslima.github.io/bootstrap-filestyle/js/bootstrap-filestyle.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.custom.32033.js"></script>
+
+    <!--[if lt IE 9]-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-filestyle.min.js"> </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(":file").filestyle();
+        });
+    </script>
+
+
 </body>
+
 </html>

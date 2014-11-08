@@ -88,19 +88,22 @@ class JSONResponse(HttpResponse):
 def adv_detail_by_loc_id(request, param):
     if request.method == 'GET':
         present = datetime.now()
-        ads = Advertisement.objects.filter(beacon__uuid__iexact=param)
+        ads = Advertisement.objects.filter(beacon__uuid__iexact=param, from_date__lte = present, to_date__gte = present)
         serializer = AdvtSerializer(ads, many=True)
         return JSONResponse(serializer.data)
 
 def makeAdvs(request):
-    '''
+
     if request.method=="POST":
         adv = AdvForm(request.POST, request.FILES)
         if adv.is_valid():
+            print "Hi1"
             adv.save()
             return HttpResponseRedirect(reverse('imageupload'))
+        else:
+            print "Hi2"
     else:
-    '''
-    adv=AdvForm()
-    images=Advertisement.objects.all()
-    return render(request,'publishAdvt.html',{'form':adv,'images':images})
+        print "Hi3"
+        adv=AdvForm()
+        images=Advertisement.objects.all()
+        return render(request,'advertisement.html',{'form':adv,'images':images})
