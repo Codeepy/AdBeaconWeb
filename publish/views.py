@@ -100,4 +100,4 @@ def makeAdvs(request):
         print "Hi3"
         adv=AdvForm()
         images=Advertisement.objects.all()
-        return render(request,'publishAdvt.html',{'form':adv,'images':images})
+        return render(request,'advertisement.html',{'form':adv,'images':images})
