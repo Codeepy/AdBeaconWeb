@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/font-awesome/css/font-awesome.min.css" />
 
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
 <div class="container">
 
 <div class="page-header">
-    <h1>Registration form <small>Bootstrap template, demonstrating a registration form with standard fields</small></h1>
+    <h1>Advertisement Page</h1>
 </div>
 
 <!-- Registration form - START -->
@@ -26,28 +26,49 @@
             <div class="col-lg-6">
                 <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
                 <div class="form-group">
-                    <label for="InputName">Enter Name</label>
+                    <label for="InputName">Company Name</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Company Name" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputEmail">Enter Email</label>
+                    <label for="InputEmail">Advertisement Location</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Advertisement Location" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputEmail">Confirm Email</label>
+                    <label for="InputEmail">Advertisement Type</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Confirm Email" required>
+                        <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Advertisement Type" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
+
+                 <div class="form-group">
+                    <label for="InputEmail">Upload Image</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Upload Image" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+
                 <div class="form-group">
-                    <label for="InputMessage">Enter Message</label>
+                    <label for="InputEmail">Advertisement Duration</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="From: dd/mm/yyyy - To: dd/mm/yyyy" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="form-group">
+                    <label for="InputMessage">Product Description</label>
                     <div class="input-group">
                         <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
@@ -59,7 +80,7 @@
         <div class="col-lg-5 col-md-push-1">
             <div class="col-md-12">
                 <div class="alert alert-success">
-                    <strong><span class="glyphicon glyphicon-ok"></span> Success! Message sent.</strong>
+                    <strong><span class="glyphicon glyphicon-ok"></span> Success! </strong>
                 </div>
                 <div class="alert alert-danger">
                     <span class="glyphicon glyphicon-remove"></span><strong> Error! Please check all page inputs.</strong>
