@@ -79,9 +79,13 @@ def makeAdvs(request):
     if request.method=="POST":
         adv = AdvForm(request.POST, request.FILES)
         if adv.is_valid():
+            print "Hi1"
             adv.save()
             return HttpResponseRedirect(reverse('imageupload'))
+        else:
+            print "Hi2"
     else:
+        print "Hi3"
         adv=AdvForm()
         images=Advertisement.objects.all()
         return render(request,'publishAdvt.html',{'form':adv,'images':images})
