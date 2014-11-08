@@ -10,8 +10,7 @@
 
     <script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
+    <![endif]-->
 </head>
 <body>
 
@@ -24,76 +23,44 @@
 <!-- Registration form - START -->
 <div class="container">
     <div class="row">
-        <form role="form">
+        <form role="form" action="#" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="col-lg-6">
                 <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
                 <div class="form-group">
                     <label for="InputName">Company Name</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Company Name" value={{form.company.value}}>
+                        <input type="text" class="form-control" name="company" id="InputName" placeholder="Company Name">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="InputCategory">Category</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="InputCategory" name="InputCategory" placeholder="Category" value={{form.category.value}}>
+                        <input type="text" class="form-control" id="InputCategory" name="category" placeholder="Category">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Pic">Image</label>
+                    <label for="Pic">Picture</label>
                     <div class="input-group">
                         <input type="file" name="pic" id="Pic" class="filestyle" data-buttonName="btn-primary">
                         <!--<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>-->
                     </div>
                 </div>
 
-{#                 <div class="form-group">#}
-{#                    <label for="InputFromDate">Input From Date</label>#}
-{#                    <div class="input-group">#}
-{#                        <input type="text" name="from_date" id="InputFromDate" class="form-control" value={{form.from_date.value}}>#}
-{#                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>#}
-{#                    </div>#}
-{#                </div>#}
-
-               <div class="form-group">
-               <label for="InputToDate">Start Date</label>
-                <div class="row">
-                    <div class='col-sm-6'>
-                        <div class="form-group">
-                            <div class='input-group date' id='datetimepicker2'>
-                                <input type='text' class="form-control" data-date-format="DD/MM/YYYY" />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                         </span>
-                     </div>
+                 <div class="form-group">
+                    <label for="InputFromDate">Input From Date</label>
+                    <div class="input-group">
+                        <input type="text" name="from_date" id="InputFromDate" class="form-control">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-                       <div class="form-group">
-                           <label for="InputToDate">End Date</label>
-                <div class="row">
-                    <div class='col-sm-6'>
-                        <div class="form-group">
-                            <div class='input-group date' id='datetimepicker3'>
-                                <input type='text' class="form-control" data-date-format="DD/MM/YYYY" />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                         </span>
-                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 
                 <div class="form-group">
                     <label for="InputToDate">Input To Date</label>
                     <div class="input-group">
-                        <input type="text" name="to_date" id="InputToDate" class="form-control" value={{form.to_date.value}}>
+                        <input type="text" name="to_date" id="InputToDate" class="form-control">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -101,14 +68,19 @@
                 <div class="form-group">
                     <label for="InputBeacon">Input Beacon</label>
                     <div class="input-group">
-                        <input type="text" name="to_date" id="InputBeacon" class="form-control" value={{form.beacon.value}}>
+                        <input type="text" name="beacon" id="InputBeacon" class="form-control">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
 
-                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                <input type="submit" id="submit" value="Submit" class="btn btn-info pull-right"/>
             </div>
         </form>
+<!--        {% for img in images %}
+        {{forloop.counter}}.<a href="{{ img.pic.url }}">{{ img.pic.name }}</a>
+        ({{img.upload_date}})<hr />
+        {% endfor %}
+-->
         <div class="col-lg-5 col-md-push-1">
             <div class="col-md-12">
                 <div class="alert alert-success">
@@ -134,18 +106,11 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <script type="text/javascript" src="/static/js/bootstrap-filestyle.min.js"> </script>
-<script src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js"></script>
-    <script type="text/javascript" src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
+
 
 <script type="text/javascript">
     $(document).ready(function(){
         $(":file").filestyle();
-        $('#datetimepicker2').datetimepicker({
-                    language: 'ru'
-                });
-        $('#datetimepicker3').datetimepicker({
-                    language: 'ru'
-                });
     });
 </script>
 

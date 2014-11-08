@@ -15,9 +15,10 @@ router.register(r'advs', views.AdvtViewSet)
 router.register(r'beacons', views.BeaconViewSet)
 urlpatterns = patterns('',
     url(r'^$', 'AdBeacon.views.home', name='home'),
-    url(r'^api/',include(router.urls)),
-    url(r'^api/',include(router.urls)),
+    url(r'^api/', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^login/', views.login, name='login'),
+    url(r'^register/', views.register, name='register'),
     url(r'^publish/', include('publish.urls')),
     url(r'^ads/(?P<param>[\w|\W]+)/$', views.adv_detail_by_loc_id, name='adv_detail_by_loc_id'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
