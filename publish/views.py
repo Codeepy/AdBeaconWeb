@@ -1,3 +1,10 @@
+import braintree
+
+braintree.Configuration.configure(braintree.Environment.Sandbox,
+                                  merchant_id="4nvngnk2nqdy9pvk",
+                                  public_key="jzzbz76c9r7nnjzj",
+                                  private_key="ce7fe085f1c98cced6e187122eea64b0")
+
 from datetime import datetime
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
@@ -16,34 +23,39 @@ def account(request, id):
     return render(request, "account.html")
 
 def payment(request):
-    return render(request, "payment.html")
+    return render(request, "payment.html", {"client_token": braintree.ClientToken.generate(), "msg": "lala"})
 
 def checkout(request):
-    import braintree
-
-    braintree.Configuration.configure(
-        braintree.Environment.Sandbox,
-        '4nvngnk2nqdy9pvk',
-        'jzzbz76c9r7nnjzj',
-        'ce7fe085f1c98cced6e187122eea64b0'
-    )
-
     client_token = braintree.ClientToken.generate()
     return client_token
 
 def create_purchase(request):
     if request.method == 'POST':
-        nonce = request.form["payment_method_nonce"]
+        nonce = request.POST["payment_method_nonce"]
         result = braintree.Transaction.sale({
             "amount": "10.00",
-            "payment_method_nonce": nonce
+            "payment_method_nonce": nonce,
+            "options": {
+                "submit_for_settlement": True
+            }
         })
-        return result
+
+        if result.is_success:
+            transaction = result.transaction
+            if transaction.status == "processor_declined":
+                return render(request, "result.html", {"status": transaction.status, "detail": result.transaction.processor_response_text})
+            elif transaction.status == "settlement_declined":
+                return render(request, "result.html", {"status": transaction.status, "detail": result.transaction.processor_settlement_response_text})
+            elif transaction.status == "gateway_rejected":
+                return render(request, "result.html", {"status": transaction.status, "detail": result.transaction.gateway_rejection_reason})
+
+            return render(request, "result.html", {"status": transaction.status, "detail": ""})
+        else:
+            return render(request, "result.html", {"status": result.errors.deep_errors, "detail": ""})
 
 
 def advertisement(request):
     return render(request, "advertisement.html")
-
 
 
 class AdvtViewSet(viewsets.ModelViewSet):
