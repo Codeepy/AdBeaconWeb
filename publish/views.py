@@ -19,6 +19,12 @@ from django.core.urlresolvers import reverse
 def index(request):
     return render(request, "register.html")
 
+def login(request):
+    return render(request, "login.html")
+
+def register(request):
+    return render(request, "register.html")
+
 def account(request, id):
     return render(request, "account.html")
 
