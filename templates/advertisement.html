@@ -10,7 +10,8 @@
 
     <script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
 </head>
 <body>
 
@@ -21,7 +22,6 @@
 </div>
 
 <!-- Registration form - START -->
-<div class="container">
     <div class="row">
         <form role="form" action="#" method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -49,21 +49,44 @@
                     </div>
                 </div>
 
-                 <div class="form-group">
-                    <label for="InputFromDate">Input From Date</label>
-                    <div class="input-group">
-                        <input type="text" name="from_date" id="InputFromDate" class="form-control">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                <div class="form-group">
+                    <div class="row">
+                        <div class='col-sm-6'>
+                            <label for="InputToDate">Start Date</label>
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input type='text' name="from_date" class="form-control" data-date-format="YYYY-MM-DD" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-sm-6'>
+                            <label for="InputToDate">End Date</label>
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker3'>
+                                    <input type='text' name="to_date" class="form-control" data-date-format="YYYY-MM-DD" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="InputToDate">Input To Date</label>
-                    <div class="input-group">
-                        <input type="text" name="to_date" id="InputToDate" class="form-control">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
+{#                <div class="form-group">#}
+{#                    <label for="InputFromDate">Input From Date</label>#}
+{#                    <div class="input-group">#}
+{#                        <input type="text" name="from_date" id="InputFromDate" class="form-control">#}
+{#                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#                <div class="form-group">#}
+{#                    <label for="InputToDate">Input To Date</label>#}
+{#                    <div class="input-group">#}
+{#                        <input type="text" name="to_date" id="InputToDate" class="form-control">#}
+{#                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>#}
+{#                    </div>#}
+{#                </div>#}
 
                 <div class="form-group">
                     <label for="InputBeacon">Input Beacon</label>
@@ -76,7 +99,7 @@
                 <input type="submit" id="submit" value="Submit" class="btn btn-info pull-right"/>
             </div>
         </form>
-<!--        {% for img in images %}
+<!--    {% for img in images %}
         {{forloop.counter}}.<a href="{{ img.pic.url }}">{{ img.pic.name }}</a>
         ({{img.upload_date}})<hr />
         {% endfor %}
@@ -92,9 +115,8 @@
             </div>
         </div>
     </div>
-</div>
 <!-- Registration form - END -->
-
+<br>
 </div>
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -107,10 +129,15 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <script type="text/javascript" src="/static/js/bootstrap-filestyle.min.js"> </script>
 
+<script src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js"></script>
+<script type="text/javascript" src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
         $(":file").filestyle();
+        $('#datetimepicker2').datetimepicker();
+        $('#datetimepicker3').datetimepicker();
+
     });
 </script>
 
