@@ -41,6 +41,10 @@ def create_purchase(request):
         return result
 
 
+def advertisement(request, id):
+    return render(request, "advertisement.html")
+
+
 
 class AdvtViewSet(viewsets.ModelViewSet):
     """
