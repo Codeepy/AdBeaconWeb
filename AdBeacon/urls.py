@@ -22,7 +22,10 @@ urlpatterns = patterns('',
     url(r'^ads/(?P<param>[\w|\W]+)/$', views.adv_detail_by_loc_id, name='adv_detail_by_loc_id'),
     url(r'^publishAdv/', views.makeAdvs, name='imageupload'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    url(r'^payment/', views.payment, name='payment'),
+    url(r'^checkout/', views.checkout, name='checkout'),
+    url(r'^purchase/', views.create_purchase, name='createpurchase')
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
