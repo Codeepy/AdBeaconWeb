@@ -32,6 +32,3 @@ class Advertisement(models.Model):
 
     def __unicode__(self):
         return self.pic.url
-
-
-
