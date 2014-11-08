@@ -28,48 +28,49 @@
                 <div class="form-group">
                     <label for="InputName">Company Name</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Company Name" required>
+                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Company Name" value={{form.company.value}}>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputEmail">Advertisement Location</label>
+                    <label for="InputCategory">Category</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Advertisement Location" required>
+                        <input type="text" class="form-control" id="InputCategory" name="InputCategory" placeholder="Category" value={{form.category.value}}>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputEmail">Advertisement Type</label>
+                    <label for="Pic">Picture</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Advertisement Type" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <input type="file" name="pic" id="Pic" class="filestyle" data-buttonName="btn-primary">
+                        <!--<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>-->
                     </div>
                 </div>
 
                  <div class="form-group">
-                    <label for="InputEmail">Upload Image</label>
+                    <label for="InputFromDate">Input From Date</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Upload Image" required>
+                        <input type="text" name="from_date" id="InputFromDate" class="form-control" value={{form.from_date.value}}>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="InputEmail">Advertisement Duration</label>
+                    <label for="InputToDate">Input To Date</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="From: dd/mm/yyyy - To: dd/mm/yyyy" required>
+                        <input type="text" name="to_date" id="InputToDate" class="form-control" value={{form.to_date.value}}>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="InputMessage">Product Description</label>
+                    <label for="InputBeacon">Input Beacon</label>
                     <div class="input-group">
-                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+                        <input type="text" name="to_date" id="InputBeacon" class="form-control" value={{form.beacon.value}}>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
+
                 <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
             </div>
         </form>
@@ -88,6 +89,24 @@
 <!-- Registration form - END -->
 
 </div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://markusslima.github.io/bootstrap-filestyle/js/bootstrap-filestyle.min.js"></script>
+<script type="text/javascript" src="/static/js/modernizr.custom.32033.js"></script>
+
+<!--[if lt IE 9]-->
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap-filestyle.min.js"> </script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(":file").filestyle();
+    });
+</script>
+
 
 </body>
 </html>
