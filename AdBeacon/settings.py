@@ -67,8 +67,8 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(default='postgres://codeepy:hackneee@adbeacon.cwwkieja1mig.eu-west-1.rds.amazonaws.com:5432/publish')
+# import dj_database_url
+# DATABASES['default'] = dj_database_url.config(default='postgres://codeepy:hackneee@adbeacon.cwwkieja1mig.eu-west-1.rds.amazonaws.com:5432/publish')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

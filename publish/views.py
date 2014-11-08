@@ -5,3 +5,6 @@ def index(request):
 
 def account(request, id):
     return render(request, "account.html")
+
+def advertisement(request):
+    return render(request, "advertisement.html")

@@ -5,4 +5,5 @@ urlpatterns = patterns('',
     url(r'^$', 'AdBeacon.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^publish/', include('publish.urls')),
+
 )
