@@ -46,12 +46,14 @@ def adv_detail_by_loc_id(request, param):
         return JSONResponse(serializer.data)
 
 def makeAdvs(request):
-    """if request.method=="POST":
+    '''
+    if request.method=="POST":
         adv = AdvForm(request.POST, request.FILES)
         if adv.is_valid():
             adv.save()
             return HttpResponseRedirect(reverse('imageupload'))
-    else:"""
+    else:
+    '''
     adv=AdvForm()
     images=Advertisement.objects.all()
     return render(request,'publishAdvt.html',{'form':adv,'images':images})
