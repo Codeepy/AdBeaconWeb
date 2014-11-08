@@ -1,8 +1,9 @@
 __author__ = 'Abdu'
-from django import forms
+
+from django.forms import ModelForm
 from publish.models import CompanyDetail, BeaconDevice, Advertisement
 
-class AdvForm(forms.Form):
+class AdvForm(ModelForm):
     class Meta:
         model = Advertisement
         fields = ['company', 'category',  'pic', 'from_date', 'to_date', 'beacon']
@@ -14,4 +15,4 @@ class AdvForm(forms.Form):
     from_date = forms.DateField()
     to_date = forms.DateField()
     beacon = forms.ManyToManyField(BeaconDevice)
-'''
+    '''
