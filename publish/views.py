@@ -15,6 +15,31 @@ def index(request):
 def account(request, id):
     return render(request, "account.html")
 
+def payment(request):
+    return render(request, "payment.html")
+
+def checkout(request):
+    import braintree
+
+    braintree.Configuration.configure(
+        braintree.Environment.Sandbox,
+        '4nvngnk2nqdy9pvk',
+        'jzzbz76c9r7nnjzj',
+        'ce7fe085f1c98cced6e187122eea64b0'
+    )
+
+    client_token = braintree.ClientToken.generate()
+    return client_token
+
+def create_purchase(request):
+    if request.method == 'POST':
+        nonce = request.form["payment_method_nonce"]
+        result = braintree.Transaction.sale({
+            "amount": "10.00",
+            "payment_method_nonce": nonce
+        })
+        return result
+
 
 
 class AdvtViewSet(viewsets.ModelViewSet):

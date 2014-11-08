@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+    <script>
+        var braintree = Braintree.create('MIIBCgKCAQEAt9yYDR98HHwVsbjMpfJ58yHoIYlUnUngPNyZYXyU8Xp2PlR0Rmh+YQRG77zxrNFROy5Mr9cznx6oNkN8/91rCXOEtRcm2KbHUpW83NsvonFguko/T4JRqA0T+UHLV7QBdK3YSgR84tF2W5MoJn8VL7e9VLG0A4GbpaQV5vmR7rFoVTwNHOe7KRqYVMRRrLlm5v6XK7TkMf96dGZqNr49BZPs0qX5TbPnEKNm9KXSYJEoVmdGZHVNCSlKjOwKtnOua5ITsyjFTf6XXwrbioaxJ73t2GmYC1HjILAKWI3qlgftAnm1jY96Lpu3jg16glTF4FVopcwvxnBAGcunhuveVwIDAQAB');
+        braintree.setup("eyJ2ZXJzaW9uIjoxLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI5YWM1NDhjMzYxYjc0NTVmMmFjMGE2NjYwOWZhMzAzZjUzNDI0YzUyYmE4ZjFiNTY3N2FjOGZmNzFiMjdhOWYxfGNyZWF0ZWRfYXQ9MjAxNC0xMS0wOFQxNTowOTowNi43Nzc2OTQxMzUrMDAwMFx1MDAyNm1lcmNoYW50X2lkPWRjcHNweTJicndkanIzcW5cdTAwMjZwdWJsaWNfa2V5PTl3d3J6cWszdnIzdDRuYzgiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvZGNwc3B5MmJyd2RqcjNxbi9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwicGF5bWVudEFwcHMiOltdLCJjbGllbnRBcGlVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvZGNwc3B5MmJyd2RqcjNxbi9jbGllbnRfYXBpIiwiYXNzZXRzVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhdXRoVXJsIjoiaHR0cHM6Ly9hdXRoLnZlbm1vLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhbmFseXRpY3MiOnsidXJsIjoiaHR0cHM6Ly9jbGllbnQtYW5hbHl0aWNzLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb20ifSwidGhyZWVEU2VjdXJlRW5hYmxlZCI6ZmFsc2UsInBheXBhbEVuYWJsZWQiOnRydWUsInBheXBhbCI6eyJkaXNwbGF5TmFtZSI6IkFjbWUgV2lkZ2V0cywgTHRkLiAoU2FuZGJveCkiLCJjbGllbnRJZCI6bnVsbCwicHJpdmFjeVVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS9wcCIsInVzZXJBZ3JlZW1lbnRVcmwiOiJodHRwOi8vZXhhbXBsZS5jb20vdG9zIiwiYmFzZVVybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXNzZXRzVXJsIjoiaHR0cHM6Ly9jaGVja291dC5wYXlwYWwuY29tIiwiZGlyZWN0QmFzZVVybCI6bnVsbCwiYWxsb3dIdHRwIjp0cnVlLCJlbnZpcm9ubWVudE5vTmV0d29yayI6dHJ1ZSwiZW52aXJvbm1lbnQiOiJvZmZsaW5lIiwibWVyY2hhbnRBY2NvdW50SWQiOiJzdGNoMm5mZGZ3c3p5dHc1IiwiY3VycmVuY3lJc29Db2RlIjoiVVNEIn0sImNvaW5iYXNlRW5hYmxlZCI6ZmFsc2V9", 'dropin', {
+            container: 'dropin'
+        });
+    </script>
+</head>
+<body>
+    <form id="checkout" method="post" action="/checkout/">
+        <div id="dropin"></div>
+        <input type="submit" value="Pay $10">
+    </form>
+</body>
+</html>
