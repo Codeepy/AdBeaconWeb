@@ -41,7 +41,7 @@ def create_purchase(request):
         return result
 
 
-def advertisement(request, id):
+def advertisement(request):
     return render(request, "advertisement.html")
 
 
