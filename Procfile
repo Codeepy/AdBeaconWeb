@@ -1,0 +1,1 @@
+web: gunicorn AdBeacon.wsgi --log-file -
