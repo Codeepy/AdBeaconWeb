@@ -1,13 +1,19 @@
+from datetime import datetime
 from django.shortcuts import render
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from publish.serializers import AdvtSerializer, DevSerializer
+from publish.models import Advertisement, BeaconDevice
+from django.http import HttpResponse, HttpResponseRedirect
+from rest_framework.renderers import JSONRenderer
+from publish.forms import AdvForm
+from django.core.urlresolvers import reverse
 
 def index(request):
     return render(request, "register.html")
 
 def account(request, id):
     return render(request, "account.html")
-
-def advertisement(request):
-    return render(request, "advertisement.html")
 
 
 
