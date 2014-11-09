@@ -64,12 +64,16 @@
                             </li>
                             <li><a href="#screens">screens</a>
                             </li>
-                            <li><a href="/publish/advertisement/">Advertisement</a>
-                            </li>
                             <li><a class="getApp" href="#getApp">get app</a>
                             </li>
-                            <li><a href="#support">support</a>
-                            </li>
+{#                            <li><a href="#support">support</a>#}
+{#                            </li>#}
+                            {% if user.is_authenticated %}
+                                <li><a href="/publish/advertisement/">advertisement</a></li>
+                                <li><a href="/logout/">logout</a></li>
+                            {% else %}
+                                <li><a href="/login/">login</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
