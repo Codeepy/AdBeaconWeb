@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Page Not Found{% endblock %}
+{% block title %}Payment Result{% endblock %}
 
 {% load staticfiles %}
 
@@ -8,7 +8,7 @@
     <section id="error" class="container text-center">
         <h1>{{ status }}</h1>
         <p>{{ detail }}</p>
-        <a class="btn btn-primary" href="/">GO BACK TO THE HOMEPAGE</a>
+        <a class="btn btn-primary" href="/publish/advertisement/">GO BACK TO ADVERTISEMENT PAGE</a>
     </section><!--/#error-->
 {% endblock %}
 

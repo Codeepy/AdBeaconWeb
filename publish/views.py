@@ -57,7 +57,7 @@ def advertisement(request):
         adv = AdvForm(request.POST, request.FILES)
         if adv.is_valid():
             adv.save()
-            return render(request, 'payment.html')
+            return HttpResponseRedirect('/payment/')
         else:
             return render(request, 'advertisement.html', {'form': adv, 'error': 'true'})
     else:
@@ -145,6 +145,6 @@ def create_purchase(request):
             elif transaction.status == "gateway_rejected":
                 return render(request, "result.html", {"status": transaction.status, "detail": result.transaction.gateway_rejection_reason})
 
-            return render(request, "result.html", {"status": transaction.status, "detail": ""})
+            return render(request, "result.html", {"status": "Payment successful", "detail": ""})
         else:
             return render(request, "result.html", {"status": result.errors.deep_errors, "detail": ""})
