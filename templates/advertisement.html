@@ -18,7 +18,9 @@
 <div class="container">
 
 <div class="page-header">
-    <h1>Advertisement Page</h1>
+    <h1>Advertisement Page
+    <a class="btn btn-primary" href="/">GO BACK TO THE HOMEPAGE</a>
+    </h1>
 </div>
 
 {#    <div class="col-lg-5 col-md-push-1">#}
@@ -43,7 +45,7 @@
                 <div class="form-group">
                     <label for="InputName">Company Name</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="company" id="InputName" placeholder="Company Name">
+                        <input type="text" class="form-control" name="company" id="InputName" placeholder="Company Name" value="{{ company }}" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -140,7 +142,7 @@
         {% endfor %}
     </div>
 <!-- Registration form - END -->
-<br>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

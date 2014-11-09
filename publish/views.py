@@ -1,6 +1,4 @@
 import braintree
-import sendgrid
-from sendgrid import SendGridError, SendGridClientError, SendGridServerError
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -15,7 +13,7 @@ from django.shortcuts import render, render_to_response
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from publish.serializers import AdvtSerializer, DevSerializer
-from publish.models import Advertisement, BeaconDevice
+from publish.models import Advertisement, BeaconDevice, CompanyDetail
 from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework.renderers import JSONRenderer
 from publish.forms import AdvForm
@@ -55,21 +53,19 @@ def adv_detail_by_loc_id(request, param):
 @login_required(login_url='/login/')
 def advertisement(request):
 
-    if request.method=="POST":
+    if request.method == "POST":
         adv = AdvForm(request.POST, request.FILES)
         if adv.is_valid():
-            print "Hi1"
             adv.save()
-            #send_payment_confirmation_email()
-            return render(request, 'payment.html')
+            return HttpResponseRedirect('/publish/payment/')
         else:
             return render(request, 'advertisement.html', {'form': adv, 'error': 'true'})
     else:
-        print "Hi3"
         adv = AdvForm()
         images = Advertisement.objects.all()
         beacons = BeaconDevice.objects.all()
-        return render(request, 'advertisement.html', {'form': adv, 'images': images, 'beacons': beacons})
+        company = CompanyDetail.objects.get(email__iexact=request.user.email)
+        return render(request, 'advertisement.html', {'form': adv, 'images': images, 'beacons': beacons, 'company': company})
 
 def login_user(request):
     logout(request)
@@ -98,15 +94,22 @@ def register_user(request):
         email = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-        if password1 == password2:
-            user = User.objects.create_user(username=username, email=email, password=password1)
-            user.save()
-            print 'Registration successful'
-            return HttpResponseRedirect('/')
+        company = request.POST['company']
+        address = request.POST['address']
+        phone = request.POST['phone']
+        if username != "" and email != "" and password1 != "":
+            if password1 == password2:
+                user = User.objects.create_user(username=username, email=email, password=password1)
+                user.save()
+                comp = CompanyDetail.create(name=company, address=address, email=email, phone=phone)
+                comp.save()
+                return HttpResponseRedirect('/')
+            else:
+                return render(request, "register.html", {"error": "Password is not matched!", "style": "display: block"})
         else:
-            print 'Password is not matched!'
+            return render(request, "register.html", {"error": "Username, Email, and Password cannot be blank!", "style": "display: block"})
 
-    return render(request, "register.html")
+    return render(request, "register.html", {"style": "display: none"})
 
 @login_required(login_url='/login/')
 def account(request, id):
@@ -142,27 +145,6 @@ def create_purchase(request):
             elif transaction.status == "gateway_rejected":
                 return render(request, "result.html", {"status": transaction.status, "detail": result.transaction.gateway_rejection_reason})
 
-            return render(request, "result.html", {"status": transaction.status, "detail": ""})
+            return render(request, "result.html", {"status": "Payment successful", "detail": ""})
         else:
             return render(request, "result.html", {"status": result.errors.deep_errors, "detail": ""})
-
-def send_payment_confirmation_email(request):
-    sg = sendgrid.SendGridClient('abdushHussein', 'hackath0n', raise_errors=True)
-    message = sendgrid.Mail()
-    message.add_to('abdush4ever@hotmail.com')
-    message.set_subject('Payment Confirmation')
-    message.set_html('Body')
-    message.set_text('Body')
-    #message.set_html('font-family: verdana, tahoma, sans-serif; color: #fff;"> <tr> <td> <h2>Hi!</h2> <p>This is to confirm that your payment was completed successfully.</p>')
-    #message.set_text('Hi! This is to confirm that your payment was completed successfully.')
-    message.set_from('')
-    try:
-        status, msg = sg.send(message)
-        print status, msg
-        return
-    except SendGridClientError:
-        print 'client error'
-        return
-    except SendGridServerError:
-        print 'server error'
-        return
