@@ -21,6 +21,12 @@ class CompanyDetail(models.Model):
     def __unicode__(self):
         return self.company_name
 
+    @classmethod
+    def create(cls, name, address, email, phone):
+        company = cls(company_name=name, address=address, email=email, mobile=phone)
+        # do something with the book
+        return company
+
 class Advertisement(models.Model):
     company = models.ForeignKey(CompanyDetail)
     category = models.CharField(max_length=30)
