@@ -7,10 +7,19 @@
 {% block header_block %}
     <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 
-    <form id="form" method="post" action="/purchase/">{% csrf_token %}
-        <div id="dropin"></div>
-        <input type="submit" value="Pay $10">
-    </form>
+    <div class="container">
+        <div class="page-header">
+            <h1>Payment Page
+            <a class="btn btn-primary" href="/">GO BACK TO THE HOMEPAGE</a>
+            </h1>
+        </div>
+        <div class="row">
+            <form id="form" method="post" action="/publish/purchase/">{% csrf_token %}
+                <div id="dropin"></div>
+                <input type="submit" value="Pay $10">
+            </form>
+        </div>
+    </div>
 {% endblock %}
 
 {% block body_block %}

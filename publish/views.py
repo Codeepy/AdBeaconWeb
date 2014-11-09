@@ -57,7 +57,7 @@ def advertisement(request):
         adv = AdvForm(request.POST, request.FILES)
         if adv.is_valid():
             adv.save()
-            return HttpResponseRedirect('/payment/')
+            return HttpResponseRedirect('/publish/payment/')
         else:
             return render(request, 'advertisement.html', {'form': adv, 'error': 'true'})
     else:
