@@ -1,4 +1,6 @@
 import braintree
+import sendgrid
+from sendgrid import SendGridError, SendGridClientError, SendGridServerError
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -58,6 +60,7 @@ def advertisement(request):
         if adv.is_valid():
             print "Hi1"
             adv.save()
+            #send_payment_confirmation_email()
             return render(request, 'payment.html')
         else:
             return render(request, 'advertisement.html', {'form': adv, 'error': 'true'})
@@ -143,3 +146,23 @@ def create_purchase(request):
         else:
             return render(request, "result.html", {"status": result.errors.deep_errors, "detail": ""})
 
+def send_payment_confirmation_email(request):
+    sg = sendgrid.SendGridClient('abdushHussein', 'hackath0n', raise_errors=True)
+    message = sendgrid.Mail()
+    message.add_to('abdush4ever@hotmail.com')
+    message.set_subject('Payment Confirmation')
+    message.set_html('Body')
+    message.set_text('Body')
+    #message.set_html('font-family: verdana, tahoma, sans-serif; color: #fff;"> <tr> <td> <h2>Hi!</h2> <p>This is to confirm that your payment was completed successfully.</p>')
+    #message.set_text('Hi! This is to confirm that your payment was completed successfully.')
+    message.set_from('')
+    try:
+        status, msg = sg.send(message)
+        print status, msg
+        return
+    except SendGridClientError:
+        print 'client error'
+        return
+    except SendGridServerError:
+        print 'server error'
+        return
